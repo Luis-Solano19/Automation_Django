@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from .utils import get_all_custom_models
+from .utils import check_csv_errors, get_all_custom_models
 from uploads.models import Upload
 from django.conf import settings
-from django.core.management import call_command
+# from django.core.management import call_command
 from django.contrib import messages
+from .tasks import import_data_task
 
 # Create your views here.
 
@@ -22,13 +23,28 @@ def import_data(request):
         # making absolute path
         absolute_file_path = str(upload.file.path)
         
-        # trigger the import data command
+        #check for CSV errors
         try:
-            call_command('importdata', absolute_file_path, model_name) # importdata was command created before
-            messages.success(request, 'Data from CSV imported successfully! ')
+            check_csv_errors(absolute_file_path, model_name) # if this fails will return error
+        
         except Exception as e:
             messages.error(request, str(e))
+            return redirect('import_data')
         
+        
+        # handle the import data task here
+        import_data_task.delay(absolute_file_path, model_name)
+        
+        # code commented below was taken to tasks.py on dataentry
+        # trigger the import data command
+        # try:
+        #     call_command('importdata', absolute_file_path, model_name) # importdata command created before
+        #     messages.success(request, 'Data from CSV imported successfully! ')
+        # except Exception as e:
+        #     messages.error(request, str(e))
+        
+        # show message to user
+        messages.success(request, 'Your data is being imported, you will be notified once it finishes.')
         return redirect('import_data')
     
     else:

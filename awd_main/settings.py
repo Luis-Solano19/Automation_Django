@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o40pz%%^y5=e6d)0m0m_*3*^po#1)_&kup1ia-tj#+=wcmj&rc'
+
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool) # True or False
 
 ALLOWED_HOSTS = []
 
@@ -117,7 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
     'awd_main/static',
@@ -140,3 +142,17 @@ MESSAGE_TAGS = {
     messages.ERROR: "danger", # bootstrap danger class
     50: "critical",
 }
+
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+
+# Email Configuration
+# Dont push directly into Github.
+
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Automation with Django <elcampesino48@gmail.com>'
+DEFAULT_TO_EMAIL = 'luis.solano19@hotmail.com'
