@@ -4,8 +4,8 @@ from uploads.models import Upload
 from django.conf import settings
 # from django.core.management import call_command
 from django.contrib import messages
-from .tasks import import_data_task
-
+from .tasks import import_data_task, export_data_task
+from django.core.management import call_command
 # Create your views here.
 
 def import_data(request):
@@ -53,3 +53,21 @@ def import_data(request):
             'all_models':custom_models
         }
     return render(request, 'dataentry/importdata.html', context)
+
+
+def export_data(request):
+    if request.method == "POST":
+        model_name = request.POST.get('model_name')
+        
+        # call the export data task
+        export_data_task.delay(model_name)
+        
+         # show message to user
+        messages.success(request, 'Your data is being exported, you will be notified once it finishes.')
+        return redirect('export_data')
+    else:
+        models = get_all_custom_models()
+        context = {
+            'all_models':models
+        }  
+    return render(request, 'dataentry/exportdata.html', context)

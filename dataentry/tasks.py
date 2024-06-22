@@ -1,7 +1,7 @@
 from awd_main.celery import app
 import time
 from django.core.management import call_command
-from .utils import send_mail_notification
+from .utils import generate_csv_filepath, send_mail_notification
 from django.conf import settings
 
 # tasks for celery
@@ -30,3 +30,23 @@ def import_data_task(absolute_file_path, model_name):
     send_mail_notification(mail_subject, message, to_email)
     
     return 'Data imported successfully'
+
+
+@app.task
+def export_data_task(model_name):
+    try:
+        call_command('exportdata', model_name)
+    except Exception as e:
+        raise e
+    
+    # GET WHERE THE FILE WAS GENRATED
+    file_path = generate_csv_filepath(model_name)
+    
+    # Send email with attachement.
+    mail_subject = 'Export Data Successful'
+    message = 'Export data successful, please download the attachment'
+    to_email = settings.DEFAULT_TO_EMAIL
+    
+    send_mail_notification(mail_subject, message, to_email, attachment=file_path)
+    
+    return 'Export Data task executed successfully'
