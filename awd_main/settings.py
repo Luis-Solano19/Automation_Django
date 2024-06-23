@@ -147,7 +147,7 @@ MESSAGE_TAGS = {
 CELERY_BROKER_URL = 'redis://localhost:6379'
 
 # Email Configuration
-# Dont push directly into Github.
+# Dont push directly into Github unless added to .env file.
 
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
