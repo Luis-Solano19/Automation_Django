@@ -2,7 +2,8 @@
 
 {% block content %}
 <div class="container" style="padding: 50px;">
-    <h2 class="text-center">Automate The Boring Stuff With Django</h2>
+    {% if user.is_authenticated %}
+        <h2 class="text-center">Automate The Boring Stuff With Django</h2>
     <div class="row pt-5">
         <!-- Import data -->
         <div class="col-md-4 ">
@@ -89,5 +90,22 @@
             </a>
         </div>
     </div>
+    {% else %}
+    <div class="home'info">
+        <h2 class="text-center">Automate The Boring Stuff With Django</h2>
+        <div class="text-center text-muted lead">
+            "Automate the boring stuff with Django" es un proyecto con diferentes herramientas utilizando el Framework Django para automatizar tareas rutinarias, desde
+            el procesamiento de datos hasta programar tareas y más. Aprovechando las capacidades que Django
+            ofrece, los usuarios podrán acelerar su flujo de trabajo ahorrando tiempo en tareas cotidianas."
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+            <a href="{% url 'login' %}" class="btn btn-primary text-center"><h3 >Login</h3></a>
+            <a href="{% url 'register' %}" class="btn btn-success"><h3>Register</h3></a>
+        </div>
+    </div>
+        
+        
+    {% endif %}
 </div>
 {% endblock %}
