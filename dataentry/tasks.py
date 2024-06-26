@@ -50,3 +50,4 @@ def export_data_task(model_name):
     send_mail_notification(mail_subject, message, to_email, attachment=file_path)
     
     return 'Export Data task executed successfully'
+

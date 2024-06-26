@@ -61,10 +61,12 @@ def check_csv_errors(file_path, model_name):
 def send_mail_notification(mail_subject, message, to_email, attachment=None):
     try:
         from_email = settings.DEFAULT_FROM_EMAIL
-        mail = EmailMessage(mail_subject, message,from_email, to=[to_email])
+        mail = EmailMessage(mail_subject, message, from_email, to_email)
         if attachment is not None:
             mail.attach_file(attachment)
-            
+        
+        mail.content_subtype = "html" # sending content from ckeditor as HTML content so it loads correctly
+        
         mail.send()
     except Exception as e:
         raise e

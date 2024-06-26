@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'uploads',
     'crispy_forms',
     "crispy_bootstrap5",
+    'emails',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -162,3 +164,5 @@ DEFAULT_TO_EMAIL = 'luis.solano19@hotmail.com'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+################## USING CKEDITOR 6.6.1 because greater versions give security errors.
