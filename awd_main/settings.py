@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool) # True or False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     'emails',
     'ckeditor',
+    "anymail",
 ]
 
 MIDDLEWARE = [
@@ -153,12 +154,12 @@ CELERY_BROKER_URL = 'redis://localhost:6379'
 # Email Configuration
 # Dont push directly into Github unless added to .env file.
 
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Automation with Django <elcampesino48@gmail.com>'
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_PORT = config('EMAIL_PORT', cast=int)
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Automation with Django <pruebasluh@entornopruebaluh.avancedigitaltux.online>'
 DEFAULT_TO_EMAIL = 'luis.solano19@hotmail.com'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -166,3 +167,18 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 ################## USING CKEDITOR 6.6.1 because greater versions give security errors.
+
+# FOR EMAILING WITH BREVO
+
+EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
+
+ANYMAIL = {
+    "SENDINBLUE_API_KEY": config('SENDINBLUE_API_KEY'),
+}
+
+
+# This needs to be changed each time we run Ngrok.
+
+CSRF_TRUSTED_ORIGINS = ['https://1bb3-187-190-28-248.ngrok-free.app']
+
+BASE_URL = 'https://1bb3-187-190-28-248.ngrok-free.app'

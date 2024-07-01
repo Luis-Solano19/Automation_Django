@@ -62,7 +62,7 @@ def export_data(request):
         # call the export data task
         export_data_task.delay(model_name)
         
-         # show message to user
+        # show message to user
         messages.success(request, 'Your data is being exported, you will be notified once it finishes.')
         return redirect('export_data')
     else:

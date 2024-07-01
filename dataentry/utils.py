@@ -1,11 +1,15 @@
 import csv
 import datetime
+import hashlib
 import os
+import time
 from django.apps import apps
 from django.core.management.base import  CommandError
 from django.db import DataError
 from django.conf import settings
 from django.core.mail import EmailMessage
+from emails.models import Email, Sent, EmailTracking, Subscriber
+from bs4 import BeautifulSoup
 
 # THIS FUNCTIONS ARE KNOWN AS HELPER FUNCTIONS
 # FUNCTIONS THAT WE CAN ALL ALONG ALL THE PROJECT
@@ -58,16 +62,68 @@ def check_csv_errors(file_path, model_name):
     return model
 
 
-def send_mail_notification(mail_subject, message, to_email, attachment=None):
+def send_mail_notification(mail_subject, message, to_email, attachment=None, email_id=None):
     try:
         from_email = settings.DEFAULT_FROM_EMAIL
-        mail = EmailMessage(mail_subject, message, from_email, to_email)
-        if attachment is not None:
-            mail.attach_file(attachment)
         
-        mail.content_subtype = "html" # sending content from ckeditor as HTML content so it loads correctly
+        for recipient_email in to_email:
+            new_message = message
+            # Create EmailTracking record
+            if email_id: # only it it comes from bulky email tool
+                email_obj = Email.objects.get(pk=email_id)
+                subscriber = Subscriber.objects.get(email_list = email_obj.email_list, email_address = recipient_email) # get email subscribed to a specific List
+                timestamp = str(time.time())
+                data_to_hash = f"{recipient_email}{timestamp}"
+                unique_id = hashlib.sha256(data_to_hash.encode()).hexdigest() # create unique id
+                
+                email_tracking = EmailTracking.objects.create(
+                    email = email_obj,
+                    subscriber = subscriber,
+                    unique_id = unique_id
+                )
+            
+                base_url = settings.BASE_URL # domain URL
+                
+                # Generate the tracking pixel 
+                click_tracking_url = f"{base_url}/emails/track/click/{unique_id}/" # must be a domain to be publicly accessible
+                
+                # Open tracking url
+                open_tracking_url = f"{base_url}/emails/track/open/{unique_id}"
+            
+                # Search for the links in the email body
+                # We use beautiful soup because the body or message is an HTML because of the ckeditor
+                soup = BeautifulSoup(message, 'html.parser')
+                
+                urls = [a['href'] for a in soup.find_all('a', href=True)] # get all links inside HTML
+                
+                # If there are links or ulrs in the email body, inject our tracking url to the original link
+                if urls:
+                    for url in urls:
+                        # make the final tracking URL
+                        tracking_url = f"{click_tracking_url}?url={url}"
+                        new_message = new_message.replace(f"{url}", f"{tracking_url}")
+                else:
+                    print('No urls found in the email content')
+                
+                # Create email content with tracking pixel image outside of if and for because this will detect OPENING of email
+                open_tracking_image = f"<img src='{open_tracking_url}' width='1' height='1'>"
+                new_message = new_message + open_tracking_image
+                print(f"Final message=>  {new_message}")
+            
+            mail = EmailMessage(mail_subject, new_message, from_email, to=[recipient_email]) # if not especified like to=[] each email will get the message n times.
+            if attachment is not None:
+                mail.attach_file(attachment)
         
-        mail.send()
+            mail.content_subtype = "html" # sending content from ckeditor as HTML content so it loads correctly
+            mail.send()
+        
+        # Store the total sent emails inside the Sent Model
+        if email_id:
+            sent_obj = Sent()
+            sent_obj.email = email_obj
+            sent_obj.total_sent = email_obj.email_list.count_emails() # Count how many email addresses are linked to a List
+            sent_obj.save()
+        
     except Exception as e:
         raise e
     
