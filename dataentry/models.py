@@ -28,6 +28,6 @@ class Employee(models.Model):
     total_compensation = models.DecimalField(max_digits=10, decimal_places=2)
     
     def __str__(self):
-        return self.employee_name+ ' - '+self.designation
+        return self.employee_name+ ' - '+ self.designation
     
     

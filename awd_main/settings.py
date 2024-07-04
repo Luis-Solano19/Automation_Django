@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'emails',
     'ckeditor',
     "anymail",
+    "image_compression",
 ]
 
 MIDDLEWARE = [
@@ -179,6 +180,6 @@ ANYMAIL = {
 
 # This needs to be changed each time we run Ngrok.
 
-CSRF_TRUSTED_ORIGINS = ['https://1bb3-187-190-28-248.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://f250-187-190-28-248.ngrok-free.app']
 
-BASE_URL = 'https://1bb3-187-190-28-248.ngrok-free.app'
+BASE_URL = 'https://f250-187-190-28-248.ngrok-free.app'

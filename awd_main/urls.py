@@ -36,4 +36,7 @@ urlpatterns = [
     # Emails app
     path('emails/', include('emails.urls')),
     
+    #Image Compression app
+    path('imgs_compress/', include('image_compression.urls')),
+    
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
