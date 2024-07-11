@@ -4,9 +4,9 @@
 {% block content %}
 <div class="container alert alert-primary mt-5 shadow" style="max-width: 600px; border-radius: 10px;">
     <h3 class="text-center mt-5">Import Data To Database Tables</h3>
+    
     <form action="{% url 'import_data' %}" method="POST" enctype="multipart/form-data" style="max-width: 600px; margin: auto; padding-top: 50px;">
         {% csrf_token %}
-
         <div class="form-group mb-3">
             <label for="file_path">Upload CSV File</label>
             <input type="file" name="file_path" class="form-control" required>

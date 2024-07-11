@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+    <div class="container mt-5 p-3 shadow rounded" style="max-width: 600px;">
+        <h2 class="text-center">Stock Market Analysis</h2>
+        <form action="{% url 'stocks' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{form | crispy }}
+            </div>
+            <br>
+            <input type="submit" class="btn btn-success">
+        </form>
+        {% include 'alerts.html' %}
+    </div>
+{% endblock %}
+
+<!-- Light auto complete -->
+{% block footer %}
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    {{ form.media }}
+    <style>
+        /* Target the Select2 container */
+        .select2-container--default .select2-selection--single {
+            height: 50px; /* Adjust the height as needed */
+            font-size: 18px; /* Adjust font size to ensure text fits */
+            margin-bottom: 15px;
+        }
+
+        /* Adjust the placeholder and selected value */
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 50px; /* Match this to the height */
+        }
+
+        /* Adjust the dropdown arrow */
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 50px; /* Match this to the height */
+        }
+    </style>
+{% endblock %}

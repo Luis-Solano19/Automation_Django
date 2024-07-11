@@ -29,5 +29,16 @@ class Employee(models.Model):
     
     def __str__(self):
         return self.employee_name+ ' - '+ self.designation
+
+
+class StudentUTP(models.Model):
+    matricula = models.CharField(max_length=25)
+    email = models.EmailField(max_length=40)
+    
+    def __str__(self) -> str:
+        return self.matricula + ' - ' + self.email
+    
+    class Meta:
+        verbose_name_plural = "StudentsUTP"
     
     

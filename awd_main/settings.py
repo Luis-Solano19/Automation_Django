@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',
+    'dal_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     'ckeditor',
     "anymail",
     "image_compression",
+    "stockanalysis",
 ]
 
 MIDDLEWARE = [
@@ -180,6 +183,6 @@ ANYMAIL = {
 
 # This needs to be changed each time we run Ngrok.
 
-CSRF_TRUSTED_ORIGINS = ['https://f250-187-190-28-248.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://42d8-187-189-173-226.ngrok-free.app']
 
-BASE_URL = 'https://f250-187-190-28-248.ngrok-free.app'
+BASE_URL = 'https://42d8-187-189-173-226.ngrok-free.app'
