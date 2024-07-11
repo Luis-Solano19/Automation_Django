@@ -67,7 +67,7 @@ ROOT_URLCONF = 'awd_main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['awd_main/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -181,8 +181,13 @@ ANYMAIL = {
 }
 
 
-# This needs to be changed each time we run Ngrok.
-
 CSRF_TRUSTED_ORIGINS = ['https://42d8-187-189-173-226.ngrok-free.app']
 
 BASE_URL = 'https://42d8-187-189-173-226.ngrok-free.app'
+
+
+# This needs to be changed each time we run Ngrok.
+
+# CSRF_TRUSTED_ORIGINS = ['https://42d8-187-189-173-226.ngrok-free.app']
+
+# BASE_URL = 'https://42d8-187-189-173-226.ngrok-free.app'
