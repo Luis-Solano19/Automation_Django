@@ -4,9 +4,12 @@ from .models import Stock, StockData
 from .forms import StockForm
 from .utils import scrape_stock_data
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
+@login_required(login_url='login')
 def stocks(request):
     if request.method == "POST":
         form = StockForm(request.POST)
@@ -57,14 +60,14 @@ class StockAutoComplete(autocomplete.Select2QuerySetView):
         if not self.request.user.is_authenticated:
             return Stock.objects.none()
 
-        qs = Stock.objects.all().order_by("-name")
+        qs = Stock.objects.all().order_by("name")
 
         if self.q:
             qs = qs.filter(name__istartswith=self.q)
 
         return qs
 
-
+@login_required(login_url='url')
 def stock_detail(request, pk):
     stock_data = get_object_or_404(StockData, pk=pk)
     context = {
