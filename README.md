@@ -15,22 +15,33 @@ Panel:
 
 ![image](https://github.com/user-attachments/assets/546345ad-56a1-40a7-a40d-0b1b1f362a26)
 
+
 Import:
+
 ![image](https://github.com/user-attachments/assets/49a66fa6-c780-4676-9a6d-640fcdf28431)
 
 Export:
+
 ![image](https://github.com/user-attachments/assets/f0205094-9b0e-4540-a746-787a3e327e66)
 
+
 Bulky emails:
+
 ![image](https://github.com/user-attachments/assets/f5eba537-7940-41cd-b3a2-4b760439efa2)
 
+
 Email tracking:
+
 ![image](https://github.com/user-attachments/assets/cdc4b42b-9d4b-4c94-bf07-dc958745523e)
 
+
 Image compressor:
+
 ![image](https://github.com/user-attachments/assets/80ab4fea-7523-493c-87df-210a35d8268d)
 
+
 Stock market:
+
 ![image](https://github.com/user-attachments/assets/4b2abde7-a582-48c3-b335-3877ab3c84ad)
 
 ![image](https://github.com/user-attachments/assets/80407ec2-4c1d-426c-b737-533c752ae275)
