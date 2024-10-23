@@ -1,7 +1,0 @@
-id,password,last_login,is_superuser,username,first_name,last_name,email,is_staff,is_active,date_joined
-1,pbkdf2_sha256$720000$5NJ7vQUlHUKnDFpAkmgY1R$Q6Ei0zg4hxD04tQp0RQqIwoertaI8HpGcl6GQh20hZ4=,2024-07-16 20:33:24.473232+00:00,True,luis,,,luis.solano19@ghotmail.com,True,True,2024-06-18 02:16:25.951377+00:00
-2,pbkdf2_sha256$720000$mu0pZWTvLPrV4PCtH2YJjZ$6IcNk+hZ/9J47e9p/oiW7y5fzYngqTz0LICxWPfI4mM=,,False,luisa,,,elcampesino48@gmail.com,False,True,2024-06-24 16:55:33.897237+00:00
-3,pbkdf2_sha256$720000$CTzy9HDd6N79P2hzTniz9l$RmkimVRAlCyMTMDK7Vf3IfkLCI3Zs8Za/EcMAVFUfFs=,,False,Lysa,,,microatxx@gmail.com,False,True,2024-06-24 16:56:30.316534+00:00
-4,pbkdf2_sha256$720000$jH3UYlHlvFLgRWnxXlIe2a$oxWoWlgH/MoXciwoJpVzIeKcKbgTUsoECHO+iWLVc0E=,,False,manager,,,elcampesino48@gmail.com,False,True,2024-06-24 18:43:46.805676+00:00
-5,pbkdf2_sha256$720000$XFiISgSgXN6JK9reYeNtsD$3o8NTacxIGpDGY1RHboBl2s/kQbftHHhvZzFTDw4sGo=,,False,lusi11,,,elcampesino48@gmail.com,False,True,2024-06-24 18:46:02.804549+00:00
-6,pbkdf2_sha256$720000$jtIIZcPCUNDcU7YN4W75bj$PWx6woOeZFhHxZpOHZx/ut5oegQ5YuFNNclFPro+RLY=,2024-07-11 18:13:13.113270+00:00,False,Ibrahim20,,,rodriguezolayaibrahim@gmail.com,False,True,2024-07-11 18:13:02.173504+00:00
