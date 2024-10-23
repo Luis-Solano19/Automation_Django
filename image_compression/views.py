@@ -3,9 +3,11 @@ from django.shortcuts import redirect, render
 from .forms import CompressImageForm
 from PIL import Image
 import io
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='login')
 def compress(request):
     user = request.user # user who's logged in
     

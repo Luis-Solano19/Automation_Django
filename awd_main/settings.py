@@ -67,7 +67,7 @@ ROOT_URLCONF = 'awd_main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['awd_main/templates'],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -163,6 +163,7 @@ CELERY_BROKER_URL = 'redis://localhost:6379'
 # EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 # EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 # EMAIL_USE_TLS = True
+
 DEFAULT_FROM_EMAIL = 'Automation with Django <pruebasluh@entornopruebaluh.avancedigitaltux.online>'
 DEFAULT_TO_EMAIL = 'luis.solano19@hotmail.com'
 
@@ -181,9 +182,9 @@ ANYMAIL = {
 }
 
 
-CSRF_TRUSTED_ORIGINS = ['https://42d8-187-189-173-226.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://c6e6-2806-2f0-7021-a951-dd1c-518d-e001-8dcf.ngrok-free.app']
 
-BASE_URL = 'https://42d8-187-189-173-226.ngrok-free.app'
+BASE_URL = 'https://c6e6-2806-2f0-7021-a951-dd1c-518d-e001-8dcf.ngrok-free.app'
 
 
 # This needs to be changed each time we run Ngrok.

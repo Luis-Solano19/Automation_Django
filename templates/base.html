@@ -18,13 +18,13 @@
           <a class="navbar-brand" href="{% url 'home' %}">Automation with Django</a>
           {% if user.is_authenticated %}
             <div>
-              Logged in as: <span class="text-center text-primary"> <b>{{user | title}}</b></span>
-              &nbsp; &nbsp;<a href="{% url 'logout' %}" class="float-right btn btn-outline-danger">Logout</a>
+              Autenticado como: <span class="text-center text-primary"> <b>{{user | title}}</b></span>
+              &nbsp; &nbsp;<a href="{% url 'logout' %}" class="float-right btn btn-outline-danger">Salir</a>
             </div>
           {% else %}
             <div>
-              <a href="{% url 'login' %}" class="float-right text-dark m-2 text-decoration-none">Login</a>
-              <a href="{% url 'register' %}" class="float-right text-decoration-none btn btn-success">Register</a>
+              <a href="{% url 'login' %}" class="float-right text-white m-2 text-decoration-none btn btn-primary">Iniciar</a>
+              <!-- <a href="{% url 'register' %}" class="float-right text-decoration-none btn btn-success">Register</a> -->
             </div>
           {% endif %}
         </div>

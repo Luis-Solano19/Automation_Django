@@ -4,14 +4,14 @@
 {% load crispy_forms_tags %}
 
 <div class="container mt-5 p-3 shadow rounded" style="max-width: 600px;">
-    <h2 class="text-center">Login</h2>
+    <h2 class="text-center">Inicio de Sesión</h2>
     <form action="{% url 'login' %}" method="POST">
         {% csrf_token %}
         <div class="form-group">
             {{form | crispy }}
         </div>
         <br>
-        <input type="submit" class="btn btn-success">
+        <input type="submit" class="btn btn-success" value="Ingresar">
     </form>
     {% include 'alerts.html' %}
 </div>

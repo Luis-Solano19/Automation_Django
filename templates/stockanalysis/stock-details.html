@@ -7,7 +7,7 @@
         <h3 style="font-weight: 900;">{{stock_data.current_price}}
             <span class="{% if '-' in stock_data.price_changed %} text-danger {% else %} text-success {% endif %}" style="font-size: 25px;">{{ stock_data.price_changed }}</span>
             (
-            <span class="{% if '-' in stock_data.percentage_changed %} text-danger {% else %} text-success {% endif %}" style="font-size: 25px;">{{ stock_data.percentage_changed }}</span>
+            <span class="{% if '-' in stock_data.percentage_changed %} text-danger {% else %} text-success {% endif %}" style="font-size: 25px;">%{{ stock_data.percentage_changed }}</span>
             )
             <br>
             <span style=" font-size: 16px; text-transform: uppercase;">{{ stock_data.stock.sector }}</span>
@@ -17,28 +17,28 @@
         <table class="table table-hover" style="margin: auto; max-width: 600px;">
             <tbody>
                 <tr>
-                    <td>Previous Close: </td>
+                    <td>CIERRE ANTERIOR: </td>
                     <td>{{ stock_data.previous_close }}</td>
                 </tr>
                 <tr>
-                    <td>52 Week High: </td>
+                    <td>INTERVALO ANUAL ALTO: </td>
                     <td>{{ stock_data.week_52_high }}</td>
                 </tr>
                 <tr>
-                    <td>52 Week Low: </td>
+                    <td>INTERVALO ANUAL BAJO: </td>
                     <td>{{ stock_data.week_52_low }}</td>
                 </tr>
                 <tr>
-                    <td>Market Cap: </td>
+                    <td>CAP. BURSÁTIL: </td>
                     <td>{{ stock_data.market_cap }}</td>
                 </tr>
                 <tr>
-                    <td>P/E Ratio: </td>
+                    <td>RELACIÓN PRECIO-BENEFICIO: </td>
                     <td>{{ stock_data.pe_ratio }}</td>
                 </tr>
             </tbody>
         </table>
         <br>
-        <a href="{% url 'stocks' %}" class="btn btn-info">Check Another Stock</a>
+        <a href="{% url 'stocks' %}" class="btn btn-info">Consulta otras Acciones</a>
     </div>
 {% endblock %}

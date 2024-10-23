@@ -4,14 +4,14 @@
 {% load crispy_forms_tags %}
 
     <div class="container mt-5 p-3 shadow rounded" style="max-width: 600px;">
-        <h2 class="text-center">Stock Market Analysis</h2>
+        <h2 class="text-center">Análisis del mercado de Acciones</h2><br>
         <form action="{% url 'stocks' %}" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 {{form | crispy }}
             </div>
             <br>
-            <input type="submit" class="btn btn-success">
+            <input type="submit" class="btn btn-success" value="Buscar">
         </form>
         {% include 'alerts.html' %}
     </div>

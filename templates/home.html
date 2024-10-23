@@ -3,17 +3,17 @@
 {% block content %}
 <div class="container" style="padding: 50px;">
     {% if user.is_authenticated %}
-        <h2 class="text-center">Django Automation   </h2>
+        <h2 class="text-center">Tasks Panel</h2>
     <div class="row pt-5">
         <!-- Import data -->
         <div class="col-md-4 ">
             <a href="{% url 'import_data' %}" class="text-decoration-none text-primary-emphasis ">
                 <div class="card shadow alert alert-primary" style="width: 400px;">
                     <div class="card-header ">
-                    <h4>Import Data</h4>
+                    <h4>Importar Datos</h4>
                     </div>
                     <div class="card-body ">
-                    <p class="card-text">Imports data from CSV file to any table.</p>
+                    <p class="card-text">Importa datos de un CSV a cualquier tabla.</p>
                     </div>
                 </div>
             </a>
@@ -23,10 +23,10 @@
             <a href="{% url 'export_data' %}" class="text-decoration-none text-success">
                 <div class="card shadow alert alert-success" style="width: 400px;">
                     <div class="card-header">
-                    <h4>Export Data</h4>
+                    <h4>Exportart Datos</h4>
                     </div>
                     <div class="card-body">
-                    <p class="card-text">Exports data from a specific table to a CSV file.</p>
+                    <p class="card-text">Exporta datos de una tabla especifica a un CSV.</p>
                     </div>
                 </div>
             </a>
@@ -37,10 +37,10 @@
             <a href="{% url 'send_email' %}" class="text-decoration-none text-danger">
                 <div class="card shadow alert alert-danger" style="width: 400px;">
                     <div class="card-header">
-                    <h4>Emails</h4>
+                    <h4>Emails Masivos</h4>
                     </div>
                     <div class="card-body">
-                    <p class="card-text">Sends massive emails to users</p>
+                    <p class="card-text">Envia emails masivos a usuarios</p>
                     </div>
                 </div>
             </a>
@@ -53,10 +53,10 @@
             <a href="{% url 'track_dashboard' %}" class="text-decoration-none text-warning">
                 <div class="card shadow alert alert-warning" style="width: 400px;">
                     <div class="card-header">
-                    <h4>Email Tracking</h4>
+                    <h4>Rastreo de Emails</h4>
                     </div>
                     <div class="card-body">
-                    <p class="card-text">Tracks emails and shows open and click rate</p>
+                    <p class="card-text">Rastrea emails. Rangos de apertura y de clicks</p>
                     </div>
                 </div>
             </a>
@@ -67,10 +67,10 @@
             <a href="{% url 'compress' %}" class="text-decoration-none text-info">
                 <div class="card shadow alert alert-info" style="width: 400px;">
                     <div class="card-header">
-                    <h4>Compress Images</h4>
+                    <h4>Compresor de Imagenes</h4>
                     </div>
                     <div class="card-body">
-                    <p class="card-text">Compresses Image files and reduces the size</p>
+                    <p class="card-text">Comprime una imagen y reduce su peso</p>
                     </div>
                 </div>
             </a>
@@ -81,10 +81,10 @@
             <a href="{% url 'stocks' %}" class="text-decoration-none text-dark">
                 <div class="card shadow alert alert-dark" style="width: 400px;">
                     <div class="card-header">
-                    <h4>Stock Market Analysis</h4>
+                    <h4>Análisis de Acciones (stocks)</h4>
                     </div>
                     <div class="card-body">
-                    <p class="card-text">Stock market using webscraping</p>
+                    <p class="card-text">Mercado de acciones usando web scraping</p>
                     </div>
                 </div>
             </a>
@@ -93,20 +93,19 @@
     </div>
     {% else %}
     <div class="home'info">
-        <h2 class="text-center">Automate The Boring Stuff With Django</h2>
+        <h2 class="text-center">Automating Stuff with Django and Python</h2>
+        <br>
         <div class="text-center text-muted lead">
-            "Automate the boring stuff with Django" es un proyecto con diferentes herramientas utilizando el Framework Django para automatizar tareas rutinarias, desde
-            el procesamiento de datos hasta programar tareas y más. Aprovechando las capacidades que Django
-            ofrece, los usuarios podrán acelerar su flujo de trabajo ahorrando tiempo en tareas cotidianas."
+            Un proyecto con diferentes herramientas utilizando el Framework Django y el lenguaje de programacion Python, para automatizar tareas rutinarias; desde
+            el procesamiento de datos hasta programar tareas cotidianas. Aprovechando las capacidades que Django
+            ofrece, los usuarios podrán acelerar su flujo de trabajo ahorrando tiempo."
         </div>
-
+        <br>
         <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
-            <a href="{% url 'login' %}" class="btn btn-primary text-center"><h3 >Login</h3></a>
-            <a href="{% url 'register' %}" class="btn btn-success"><h3>Register</h3></a>
+            <a href="{% url 'login' %}" class="btn btn-primary text-center"><h3 >Accede</h3></a>
+           <a href="{% url 'register' %}" class="btn btn-success"><h3>Register</h3></a>
         </div>
     </div>
-        
-        
     {% endif %}
 </div>
 {% endblock %}
