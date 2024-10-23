@@ -47,6 +47,9 @@ Stock market:
 ![image](https://github.com/user-attachments/assets/80407ec2-4c1d-426c-b737-533c752ae275)
 
 
+- Some files were removed to keep my code secure.
+
+
 
 
 
